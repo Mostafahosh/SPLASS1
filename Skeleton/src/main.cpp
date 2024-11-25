@@ -18,7 +18,6 @@ int main(int argc, char** argv){
     // 	delete backup;
     // 	backup = nullptr;
     // }
-    int i=1;
    string name  = "musmus";
    SettlementType num = SettlementType::VILLAGE;
    Settlement *s=new Settlement(name,num);
