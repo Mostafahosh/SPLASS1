@@ -1,15 +1,15 @@
 #include "Settlement.h"
-
+using namespace std;
 Settlement::Settlement(const string &name, SettlementType type):name(name),type(type){}
-const std::string &Settlement::getName() const{return Settlement::name;}
+const string &Settlement::getName() const{return Settlement::name;}
 SettlementType Settlement::getType() const{return Settlement::type;}
-const std::string Settlement::toString() const {
-        return "Name: " + name + ", Type: " + settlementTypeToString(type);
+const string Settlement::toString() const {
+        return name  +" "+ settlementTypeToString(type);
 }
 
-const std::string Settlement::settlementTypeToString(SettlementType type)const{
-    if (type == SettlementType::VILLAGE){return "village";}
-    else if (type == SettlementType:: CITY){return "CITY";}
-    else {return "METROPOLI";}
+const string Settlement::settlementTypeToString(SettlementType type)const{
+    if (type == SettlementType::VILLAGE){return "0";}
+    else if (type == SettlementType:: CITY){return "1";}
+    else {return "2";}
 }
 

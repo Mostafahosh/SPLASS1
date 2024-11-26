@@ -1,6 +1,7 @@
 // #include "Simulation.h"
 #include <iostream>
 #include <Settlement.h>
+#include <Facility.h>
 
 using namespace std;
 
@@ -22,6 +23,11 @@ int main(int argc, char** argv){
    SettlementType num = SettlementType::VILLAGE;
    Settlement *s=new Settlement(name,num);
     cout<<(*s).toString()<<endl; 
+    Facility *f=new Facility("school",s->getName(),FacilityCategory::LIFE_QUALITY,1,3,2,1);
+    cout<<f->toString()<<endl;
+    f->step();
+    cout<<f->getTimeLeft()<<endl;
     delete s;
+    delete f;
     return 0;
 }
