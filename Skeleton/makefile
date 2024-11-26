@@ -4,11 +4,14 @@ compile:
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/main.o src/main.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Settlement.o src/Settlement.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Facility.o src/Facility.cpp
-	
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/BalancedSelection.o src/BalancedSelection.cpp
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/NaiveSelection.o src/NaiveSelection.cpp
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/SustainabilitySelection.o src/SustainabilitySelection.cpp
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/EconomySelection.o src/EconomySelection.cpp
 	
 	
 link:
-	g++  -o bin/main bin/Facility.o bin/Settlement.o bin/main.o
+	g++  -o bin/main bin/EconomySelection.o bin/BalancedSelection.o bin/NaiveSelection.o bin/SustainabilitySelection.o bin/Facility.o bin/Settlement.o bin/main.o
 clean:
 	rm -f bin/*
 

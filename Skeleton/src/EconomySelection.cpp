@@ -15,7 +15,7 @@ const FacilityType& EconomySelection::selectFacility(const vector<FacilityType>&
 
     //make sure to build more facilites than the provided number if needed
     if(lastSelectedIndex + 1 == fSize){lastSelectedIndex = 0;}
-    for(int j = lastSelectedIndex ; j < fSize ; j +=1 ){
+    for(int j = lastSelectedIndex + 1 ; j < fSize ; j +=1 ){
 
         FacilityCategory checkCategory = facilitiesOptions[j].getCategory();
         if( checkCategory == FacilityCategory::ECONOMY){
