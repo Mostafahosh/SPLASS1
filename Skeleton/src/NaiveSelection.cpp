@@ -11,11 +11,12 @@ const FacilityType& NaiveSelection::selectFacility(const vector<FacilityType>& f
     if (fSize == 0){throw std::runtime_error("No facilities available for selection.");}
 
 
+if(lastSelectedIndex == fSize){lastSelectedIndex = 0;}
     //make sure to build more facilites than the provided number if needed
-    if(lastSelectedIndex + 1 == fSize){lastSelectedIndex = 0;}
     for(int j = lastSelectedIndex ; j < fSize ; j +=1 ){
-        lastSelectedIndex += j;
-        return facilitiesOptions[lastSelectedIndex - 1];
+        //lastSelectedIndex = (lastSelectedIndex + 1) % (fSiz;
+
+        return facilitiesOptions[lastSelectedIndex++];
     }
 }
 

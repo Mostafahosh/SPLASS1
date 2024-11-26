@@ -59,3 +59,8 @@ const string Facility::facilityCategoryToString(FacilityCategory type)const{
     else if (type == FacilityCategory:: ECONOMY){return "1";}
     else {return "2";}
 }
+
+// Facility& operator=(Facility& facility)
+// {
+
+// }
