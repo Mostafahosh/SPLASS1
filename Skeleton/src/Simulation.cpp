@@ -2,7 +2,7 @@
 
 
 
-void Simulation::start(cout<<"The simulation has started"<<endl) //maybe add another things to the start
+void Simulation::start(){cout<<"The simulation has started"<<endl;} //maybe add another things to the start
 
 void Simulation::addPlan(const Settlement *settlement, SelectionPolicy *selectionPolicy){
     Plan newPlan = new Plan(planCounter,settlement,selectionPolicy,facilitiesOptions);
@@ -75,7 +75,7 @@ curr_plan.underConstruction[j]->step; //decrease the cost of the facility
 
 //to be continued
 void Simulation::close(){
-    for (int i =0;i < plans.size() i+=1){
+    for (int i =0;i < plans.size() ;i+=1){
         cout<<"PlanID: " + plans[i].plan_id<<endl;
         cout<<"SettlementName: " + plans[i].settlement->getName<<endl;
         cout<<"LifeQualityScore: " + plans[i].getlifeQualityScore<<endl;

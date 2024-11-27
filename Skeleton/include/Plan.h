@@ -35,5 +35,5 @@ class Plan {
         
         //Additional_Methods
         PlanStatus setPlanStatus();
-}
+};
 
