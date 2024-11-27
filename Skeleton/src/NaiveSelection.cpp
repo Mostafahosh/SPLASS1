@@ -4,20 +4,22 @@
 #include <string>
 
 
-NaiveSelection::NaiveSelection() : lastSelectedIndex (0){}
+NaiveSelection::NaiveSelection() : lastSelectedIndex (-1){}
 
 const FacilityType& NaiveSelection::selectFacility(const vector<FacilityType>& facilitiesOptions){
     int fSize = facilitiesOptions.size();
     if (fSize == 0){throw std::runtime_error("No facilities available for selection.");}
 
 
-if(lastSelectedIndex == fSize){lastSelectedIndex = 0;}
+    //if(lastSelectedIndex == fSize){lastSelectedIndex = 0;}
     //make sure to build more facilites than the provided number if needed
-    for(int j = lastSelectedIndex ; j < fSize ; j +=1 ){
+    for(int j = 0 ; j < fSize ; j +=1 ){
         //lastSelectedIndex = (lastSelectedIndex + 1) % (fSiz;
-
-        return facilitiesOptions[lastSelectedIndex++];
+        lastSelectedIndex = (lastSelectedIndex+1+j)%fSize;
+        return facilitiesOptions[lastSelectedIndex];
+        //return facilitiesOptions[lastSelectedIndex++];
     }
+     
 }
 
 const string NaiveSelection::toString() const{return "NaiveSelection";}
