@@ -5,7 +5,7 @@
 
 
 
-SustainabilitySelection::SustainabilitySelection() : lastSelectedIndex(0){}
+SustainabilitySelection::SustainabilitySelection() : lastSelectedIndex(-1){}
 
 
 // const FacilityType& SustainabilitySelection::selectFacility(const vector<FacilityType>& facilitiesOptions){
@@ -32,15 +32,17 @@ const FacilityType& SustainabilitySelection::selectFacility(const vector<Facilit
 
 
     //make sure to build more facilites than the provided number if needed
-    if(lastSelectedIndex + 1 == fSize){lastSelectedIndex = 0;}
-    for(int j = lastSelectedIndex + 1 ; j < fSize ; j +=1 ){
+    //if(lastSelectedIndex +1== fSize){lastSelectedIndex = 0;}
+    for(int j = 0; j < fSize ; j +=1 ){
 
-        FacilityCategory checkCategory = facilitiesOptions[j].getCategory();
+        FacilityCategory checkCategory = facilitiesOptions[(lastSelectedIndex+1+j)%fSize].getCategory();
         if( checkCategory == FacilityCategory::ENVIRONMENT){
-            lastSelectedIndex = j;
-            return facilitiesOptions[j];
+            lastSelectedIndex = (lastSelectedIndex+1+j)%fSize;
+            return facilitiesOptions[lastSelectedIndex];
         }
     }
+    lastSelectedIndex++;
+    return facilitiesOptions[(lastSelectedIndex)%fSize];
 }
 
 
