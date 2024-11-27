@@ -23,6 +23,7 @@ class Plan {
         void addFacility(Facility* facility);
         const string toString() const;
 
+        const PlanStatus getStatus() const;
         //Copy/Des
         Plan(const Plan& other);
         ~Plan();
@@ -36,4 +37,8 @@ class Plan {
         vector<Facility*> underConstruction;
         const vector<FacilityType> &facilityOptions;
         int life_quality_score, economy_score, environment_score;
+        
+        //Additional_Methods
+        PlanStatus setPlanStatus();
 };
+

@@ -11,12 +11,12 @@ using namespace std;
 // Simulation* backup = nullptr;
 
 int main(int argc, char** argv){
-     if(argc!=2){
-         cout << "usage: simulation <config_path>" << endl;
-         return 0;
-     }
-     string configurationFile = argv[1];
-     Simulation simulation(configurationFile);
+    //  if(argc!=2){
+    //      cout << "usage: simulation <config_path>" << endl;
+    //      return 0;
+    //  }
+    //  string configurationFile = argv[1];
+    //  Simulation simulation(configurationFile);
     // simulation.start();
     //  if(backup!=nullptr){
     //  	delete backup;
@@ -50,31 +50,31 @@ int main(int argc, char** argv){
 
 //--------------------------------------------DECLERATIONS----------------------------------------
 //--------------------Random_Declerations------------------
-//    string name  = "musmus";
-//    SettlementType num = SettlementType::VILLAGE;
-//    Settlement *s=new Settlement(name,num);
-//     cout<<(*s).toString()<<endl; 
+   string name  = "musmus";
+   SettlementType num = SettlementType::VILLAGE;
+   Settlement *s=new Settlement(name,num);
+    cout<<(*s).toString()<<endl; 
 
-//      //for(int i = 0 ; i <v1.size(); i+=1){cout<<v1[i].toString()<<endl;}
-//      //std::cout<<f.getName()<<endl;
+     //for(int i = 0 ; i <v1.size(); i+=1){cout<<v1[i].toString()<<endl;}
+     //std::cout<<f.getName()<<endl;
    
-// //---------------SelectionPoliciy-------------------------------
-// FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1);
-//     Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,2,4,1,1);
-//     Facility f2= Facility("office",s->getName(),FacilityCategory::ECONOMY,3,3,2,2);
-//     Facility f3= Facility("gym",s->getName(),FacilityCategory::ENVIRONMENT,3,5,2,1);
-//     vector<FacilityType> v1;
-//     v1.push_back(f);v1.push_back(f1);v1.push_back(f2);v1.push_back(f3);
+//---------------SelectionPoliciy-------------------------------
+FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1);
+    Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,2,4,1,1);
+    Facility f2= Facility("office",s->getName(),FacilityCategory::ECONOMY,3,3,2,2);
+    Facility f3= Facility("gym",s->getName(),FacilityCategory::ENVIRONMENT,3,5,2,1);
+    vector<FacilityType> v1;
+    v1.push_back(f);v1.push_back(f1);v1.push_back(f2);v1.push_back(f3);
 
 
 
-// //decleration fot selectionP Naive tests
-//     NaiveSelection n =NaiveSelection();
-//     FacilityType example1 =n.selectFacility(v1);
-//     FacilityType example2 =n.selectFacility(v1);
-//     FacilityType example3 =n.selectFacility(v1);
-//     FacilityType example4 =n.selectFacility(v1);
-//     FacilityType example5 =n.selectFacility(v1);
+//decleration fot selectionP Naive tests
+    NaiveSelection n =NaiveSelection();
+    FacilityType example1 =n.selectFacility(v1);
+    FacilityType example2 =n.selectFacility(v1);
+    FacilityType example3 =n.selectFacility(v1);
+    FacilityType example4 =n.selectFacility(v1);
+    FacilityType example5 =n.selectFacility(v1);
 
 
 // //decleration fot selectionP Economy tests
@@ -118,14 +118,14 @@ int main(int argc, char** argv){
 //----------------SelectionPolicicy_PrintingTest--------------------------------
     // cout<<"___________________________SelectionPolicicy_PrintingTest________________________"<<endl;
 
-    // cout<<"___________________________SelectionP_Naive________________________"<<endl;
+    cout<<"___________________________SelectionP_Naive________________________"<<endl;
 
 
-    // std::cout<<"name is = " + example1.getName()<<endl;
-    // std::cout<<"name is = " + example2.getName()<<endl;
-    // std::cout<<"name is = " + example3.getName()<<endl;
-    // std::cout<<"name is = " + example4.getName()<<endl;
-    // std::cout<<"name is = " + example5.getName()<<endl;
+    std::cout<<"name is = " + example1.getName()<<endl;
+    std::cout<<"name is = " + example2.getName()<<endl;
+    std::cout<<"name is = " + example3.getName()<<endl;
+    std::cout<<"name is = " + example4.getName()<<endl;
+    std::cout<<"name is = " + example5.getName()<<endl;
 
     // cout<<"___________________________SelectionP_Economy________________________"<<endl;
 
@@ -161,7 +161,7 @@ int main(int argc, char** argv){
     //cout<<f->toString()<<endl;
     //f->step();
     //cout<<f->getTimeLeft()<<endl;
-    // delete s;
+    delete s;
   
     return 0;
 }
