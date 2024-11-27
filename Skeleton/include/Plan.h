@@ -23,6 +23,10 @@ class Plan {
         void addFacility(Facility* facility);
         const string toString() const;
 
+        //Copy/Des
+        Plan(const Plan& other);
+        ~Plan();
+
     private:
         int plan_id;
         const Settlement *settlement;
