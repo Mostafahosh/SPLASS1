@@ -1,10 +1,12 @@
 #include "Settlement.h"
 using namespace std;
-Settlement::Settlement(const string &name, SettlementType type):name(name),type(type){}
+
+Settlement::Settlement(const string &name, SettlementType type) : name(name) , type(type) {}
+
 const string &Settlement::getName() const{return Settlement::name;}
 SettlementType Settlement::getType() const{return Settlement::type;}
 const string Settlement::toString() const {
-        return name  +" "+ settlementTypeToString(type);
+        return "the settlement name is: " + name  +" of type: " + settlementTypeToString(type);
 }
 
 const string Settlement::settlementTypeToString(SettlementType type)const{
