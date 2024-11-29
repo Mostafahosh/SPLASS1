@@ -1,8 +1,9 @@
-// #include "Simulation.h"
+#include "Simulation.h"
 #include <iostream>
 #include <Settlement.h>
 #include <Facility.h>
- #include <SelectionPolicy.h>
+#include <Plan.h>
+#include <SelectionPolicy.h>
 #include <vector>
 
 using namespace std;
@@ -10,17 +11,17 @@ using namespace std;
 // Simulation* backup = nullptr;
 
 int main(int argc, char** argv){
-    // if(argc!=2){
-    //     cout << "usage: simulation <config_path>" << endl;
-    //     return 0;
-    // }
-    // string configurationFile = argv[1];
-    // Simulation simulation(configurationFile);
+    //  if(argc!=2){
+    //      cout << "usage: simulation <config_path>" << endl;
+    //      return 0;
+    //  }
+    //  string configurationFile = argv[1];
+    //  Simulation simulation(configurationFile);
     // simulation.start();
-    // if(backup!=nullptr){
-    // 	delete backup;
-    // 	backup = nullptr;
-    // }
+    //  if(backup!=nullptr){
+    //  	delete backup;
+    //  	backup = nullptr;
+    //  }
 
 
 
@@ -76,33 +77,33 @@ FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1
     FacilityType example5 =n.selectFacility(v1);
 
 
-//decleration fot selectionP Economy tests
-    EconomySelection e = EconomySelection();    
-    FacilityType example6 =e.selectFacility(v1);
-    FacilityType example7 =e.selectFacility(v1);
-    FacilityType example8 =e.selectFacility(v1);
-    FacilityType example9 =e.selectFacility(v1);
-    FacilityType example10 =e.selectFacility(v1);
+// //decleration fot selectionP Economy tests
+//     EconomySelection e = EconomySelection();    
+//     FacilityType example6 =e.selectFacility(v1);
+//     FacilityType example7 =e.selectFacility(v1);
+//     FacilityType example8 =e.selectFacility(v1);
+//     FacilityType example9 =e.selectFacility(v1);
+//     FacilityType example10 =e.selectFacility(v1);
 
 
 
 
-// decleration fot selectionP Enviroment tests
-    SustainabilitySelection sus = SustainabilitySelection();
-    FacilityType example11 =sus.selectFacility(v1);
-    FacilityType example12 =sus.selectFacility(v1);
-    FacilityType example13 =sus.selectFacility(v1);
-    FacilityType example14 =sus.selectFacility(v1);
-    FacilityType example15 =sus.selectFacility(v1);
+// // decleration fot selectionP Enviroment tests
+//     SustainabilitySelection sus = SustainabilitySelection();
+//     FacilityType example11 =sus.selectFacility(v1);
+//     FacilityType example12 =sus.selectFacility(v1);
+//     FacilityType example13 =sus.selectFacility(v1);
+//     FacilityType example14 =sus.selectFacility(v1);
+//     FacilityType example15 =sus.selectFacility(v1);
 
 
-//decleration for selectionP Balanced tests
-    BalancedSelection b = BalancedSelection(0,0,0);
-    FacilityType example16 =b.selectFacility(v1);
-    FacilityType example17 =b.selectFacility(v1);
-    FacilityType example18 =b.selectFacility(v1);
-    FacilityType example19 =b.selectFacility(v1);
-    FacilityType example20 =b.selectFacility(v1);
+// //decleration for selectionP Balanced tests
+//     BalancedSelection b = BalancedSelection(0,0,0);
+//     FacilityType example16 =b.selectFacility(v1);
+//     FacilityType example17 =b.selectFacility(v1);
+//     FacilityType example18 =b.selectFacility(v1);
+//     FacilityType example19 =b.selectFacility(v1);
+//     FacilityType example20 =b.selectFacility(v1);
 
     
 
@@ -115,7 +116,7 @@ FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1
 
 
 //----------------SelectionPolicicy_PrintingTest--------------------------------
-    cout<<"___________________________SelectionPolicicy_PrintingTest________________________"<<endl;
+    // cout<<"___________________________SelectionPolicicy_PrintingTest________________________"<<endl;
 
     cout<<"___________________________SelectionP_Naive________________________"<<endl;
 
@@ -126,31 +127,31 @@ FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1
     std::cout<<"name is = " + example4.getName()<<endl;
     std::cout<<"name is = " + example5.getName()<<endl;
 
-    cout<<"___________________________SelectionP_Economy________________________"<<endl;
+    // cout<<"___________________________SelectionP_Economy________________________"<<endl;
 
-    std::cout<<"name is = " + example6.getName()<<endl;
-    std::cout<<"name is = " + example7.getName()<<endl;
-    std::cout<<"name is = " + example8.getName()<<endl;
-    std::cout<<"name is = " + example9.getName()<<endl;
-    std::cout<<"name is = " + example10.getName()<<endl;
+    // std::cout<<"name is = " + example6.getName()<<endl;
+    // std::cout<<"name is = " + example7.getName()<<endl;
+    // std::cout<<"name is = " + example8.getName()<<endl;
+    // std::cout<<"name is = " + example9.getName()<<endl;
+    // std::cout<<"name is = " + example10.getName()<<endl;
 
-     cout<<"___________________SelectionP_Sustainability_________________________"<<endl;
+    //  cout<<"___________________SelectionP_Sustainability_________________________"<<endl;
 
 
     
-    std::cout<<"name is = " + example11.getName()<<endl;
-    std::cout<<"name is = " + example12.getName()<<endl;
-    std::cout<<"name is = " + example13.getName()<<endl;
-    std::cout<<"name is = " + example14.getName()<<endl;
-    std::cout<<"name is = " + example15.getName()<<endl;
+    // std::cout<<"name is = " + example11.getName()<<endl;
+    // std::cout<<"name is = " + example12.getName()<<endl;
+    // std::cout<<"name is = " + example13.getName()<<endl;
+    // std::cout<<"name is = " + example14.getName()<<endl;
+    // std::cout<<"name is = " + example15.getName()<<endl;
 
-    cout<<"___________________SelectionP_Balanced_________________________"<<endl;
+    // cout<<"___________________SelectionP_Balanced_________________________"<<endl;
 
-    std::cout<<"name is = " + example16.getName()<<endl;
-    std::cout<<"name is = " + example17.getName()<<endl;
-    std::cout<<"name is = " + example18.getName()<<endl;
-    std::cout<<"name is = " + example19.getName()<<endl;
-    std::cout<<"name is = " + example20.getName()<<endl;
+    // std::cout<<"name is = " + example16.getName()<<endl;
+    // std::cout<<"name is = " + example17.getName()<<endl;
+    // std::cout<<"name is = " + example18.getName()<<endl;
+    // std::cout<<"name is = " + example19.getName()<<endl;
+    // std::cout<<"name is = " + example20.getName()<<endl;
     
 
 
