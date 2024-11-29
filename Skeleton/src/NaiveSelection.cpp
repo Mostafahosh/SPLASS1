@@ -19,7 +19,7 @@ const FacilityType& NaiveSelection::selectFacility(const vector<FacilityType>& f
         return facilitiesOptions[lastSelectedIndex];
         //return facilitiesOptions[lastSelectedIndex++];
     }
-     
+     return facilitiesOptions[lastSelectedIndex];
 }
 
 const string NaiveSelection::toString() const{return "NaiveSelection";}

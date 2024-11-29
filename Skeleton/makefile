@@ -17,7 +17,7 @@ compile:
 link:
 	g++  -o bin/main bin/Plan.o bin/Simulation.o bin/Auxiliary.o bin/EconomySelection.o bin/BalancedSelection.o bin/NaiveSelection.o bin/SustainabilitySelection.o bin/Facility.o bin/Settlement.o bin/main.o
 clean:
-	rm -f bin/*
+	rm -f bin/*.o
 
 run:
 	rm -f bin/*.o
