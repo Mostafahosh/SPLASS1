@@ -51,16 +51,16 @@ int main(int argc, char** argv){
 //--------------------------------------------DECLERATIONS----------------------------------------
 //--------------------Random_Declerations------------------
    string name  = "musmus";
-   SettlementType num = SettlementType::VILLAGE;
+   SettlementType num = SettlementType::METROPOLIS;
    Settlement *s=new Settlement(name,num);
     cout<<(*s).toString()<<endl; 
-
+    
      //for(int i = 0 ; i <v1.size(); i+=1){cout<<v1[i].toString()<<endl;}
      //std::cout<<f.getName()<<endl;
    
 //---------------SelectionPoliciy-------------------------------
-FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1);
-    Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,2,4,1,1);
+    Facility f= Facility("school",s->getName(),FacilityCategory::ECONOMY,2,3,2,1);
+    Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,4,4,1,1);
     Facility f2= Facility("office",s->getName(),FacilityCategory::ECONOMY,3,3,2,2);
     Facility f3= Facility("gym",s->getName(),FacilityCategory::ENVIRONMENT,3,5,2,1);
     vector<FacilityType> v1;
@@ -69,13 +69,22 @@ FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1
 
 
 //decleration fot selectionP Naive tests
-    NaiveSelection n =NaiveSelection();
-    FacilityType example1 =n.selectFacility(v1);
-    FacilityType example2 =n.selectFacility(v1);
-    FacilityType example3 =n.selectFacility(v1);
-    FacilityType example4 =n.selectFacility(v1);
-    FacilityType example5 =n.selectFacility(v1);
-
+    NaiveSelection* n =new NaiveSelection();
+    // FacilityType example1 =n->selectFacility(v1);
+    // FacilityType example2 =n->selectFacility(v1);
+    // FacilityType example3 =n->selectFacility(v1);
+    // FacilityType example4 =n->selectFacility(v1);
+    // FacilityType example5 =n->selectFacility(v1);
+    Plan p(1,(*s),n,v1);
+    //Plan p2(p);
+    p.printStatus();
+    //p2.printStatus();
+    p.step();
+    p.printStatus();
+    p.step();
+    p.printStatus();
+    p.step();
+    p.printStatus();
 
 // //decleration fot selectionP Economy tests
 //     EconomySelection e = EconomySelection();    
@@ -118,14 +127,14 @@ FacilityType f= Facility("school",s->getName(),FacilityCategory::ECONOMY,1,3,2,1
 //----------------SelectionPolicicy_PrintingTest--------------------------------
     // cout<<"___________________________SelectionPolicicy_PrintingTest________________________"<<endl;
 
-    cout<<"___________________________SelectionP_Naive________________________"<<endl;
+    // cout<<"___________________________SelectionP_Naive________________________"<<endl;
 
 
-    std::cout<<"name is = " + example1.getName()<<endl;
-    std::cout<<"name is = " + example2.getName()<<endl;
-    std::cout<<"name is = " + example3.getName()<<endl;
-    std::cout<<"name is = " + example4.getName()<<endl;
-    std::cout<<"name is = " + example5.getName()<<endl;
+    // std::cout<<"name is = " + example1.getName()<<endl;
+    // std::cout<<"name is = " + example2.getName()<<endl;
+    // std::cout<<"name is = " + example3.getName()<<endl;
+    // std::cout<<"name is = " + example4.getName()<<endl;
+    // std::cout<<"name is = " + example5.getName()<<endl;
 
     // cout<<"___________________________SelectionP_Economy________________________"<<endl;
 

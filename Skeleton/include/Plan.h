@@ -22,9 +22,14 @@ class Plan {
         const vector<Facility*> &getFacilities() const;
         void addFacility(Facility* facility);
         const string toString() const;
+        const int getID() const;
+        const vector<Facility*> &getUnderConstructions() const;
 
+        void setPlanStatus(PlanStatus newStatus);
+
+        const Settlement& getSettlementOfPlan() const;
         const PlanStatus getStatus() const;
-        //Copy/Des
+        //Copy//Des
         Plan(const Plan& other);
         ~Plan();
 

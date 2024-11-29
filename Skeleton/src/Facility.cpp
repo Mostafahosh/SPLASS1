@@ -40,16 +40,16 @@ const int Facility::getTimeLeft() const{
 const FacilityStatus& Facility::getStatus() const{
     return status;
 }
-void Facility::setStatus(FacilityStatus status){
-    Facility::status=status;
+void Facility::setStatus(FacilityStatus newstatus){
+    Facility::status=newstatus;
 }
 
 FacilityStatus Facility::step(){
-    timeLeft--;
-    if(this->getTimeLeft()==0){
+    timeLeft=timeLeft-1;
+    if(this->timeLeft==0){
         this->setStatus(FacilityStatus::OPERATIONAL);
     }
-    return this->getStatus();
+    return this->status;
 }
 
 const string Facility::toString() const{
