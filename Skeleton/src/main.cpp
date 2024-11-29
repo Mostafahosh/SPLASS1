@@ -11,17 +11,18 @@ using namespace std;
 // Simulation* backup = nullptr;
 
 int main(int argc, char** argv){
-    //  if(argc!=2){
-    //      cout << "usage: simulation <config_path>" << endl;
-    //      return 0;
-    //  }
-    //  string configurationFile = argv[1];
-    //  Simulation simulation(configurationFile);
-    // simulation.start();
+     if(argc!=2){
+         cout << "usage: simulation <config_path>" << endl;
+         return 0;
+     }
+     string configurationFile = argv[1];
+     
+     Simulation simulation(configurationFile);
+    //simulation.start();
     //  if(backup!=nullptr){
     //  	delete backup;
     //  	backup = nullptr;
-    //  }
+     
 
 
 
@@ -50,41 +51,43 @@ int main(int argc, char** argv){
 
 //--------------------------------------------DECLERATIONS----------------------------------------
 //--------------------Random_Declerations------------------
-   string name  = "musmus";
-   SettlementType num = SettlementType::METROPOLIS;
-   Settlement *s=new Settlement(name,num);
-    cout<<(*s).toString()<<endl; 
+//    string name  = "musmus";
+//    SettlementType num = SettlementType::METROPOLIS;
+//    Settlement *s=new Settlement(name,num);
+//     cout<<(*s).toString()<<endl; 
     
      //for(int i = 0 ; i <v1.size(); i+=1){cout<<v1[i].toString()<<endl;}
      //std::cout<<f.getName()<<endl;
    
 //---------------SelectionPoliciy-------------------------------
-    Facility f= Facility("school",s->getName(),FacilityCategory::ECONOMY,2,3,2,1);
-    Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,4,4,1,1);
-    Facility f2= Facility("office",s->getName(),FacilityCategory::ECONOMY,3,3,2,2);
-    Facility f3= Facility("gym",s->getName(),FacilityCategory::ENVIRONMENT,3,5,2,1);
-    vector<FacilityType> v1;
-    v1.push_back(f);v1.push_back(f1);v1.push_back(f2);v1.push_back(f3);
+    // Facility f= Facility("school",s->getName(),FacilityCategory::ECONOMY,2,3,2,1);
+    // Facility f1= Facility("park",s->getName(),FacilityCategory::ENVIRONMENT,4,4,1,1);
+    // Facility f2= Facility("office",s->getName(),FacilityCategory::ECONOMY,3,3,2,2);
+    // Facility f3= Facility("gym",s->getName(),FacilityCategory::ENVIRONMENT,3,5,2,1);
+    //vector<FacilityType> v1;
+    //v1.push_back(f);v1.push_back(f1);v1.push_back(f2);v1.push_back(f3);
 
 
 
 //decleration fot selectionP Naive tests
-    NaiveSelection* n =new NaiveSelection();
+    //NaiveSelection* n =new NaiveSelection();
     // FacilityType example1 =n->selectFacility(v1);
     // FacilityType example2 =n->selectFacility(v1);
     // FacilityType example3 =n->selectFacility(v1);
     // FacilityType example4 =n->selectFacility(v1);
     // FacilityType example5 =n->selectFacility(v1);
-    Plan p(1,(*s),n,v1);
-    //Plan p2(p);
-    p.printStatus();
-    //p2.printStatus();
-    p.step();
-    p.printStatus();
-    p.step();
-    p.printStatus();
-    p.step();
-    p.printStatus();
+
+
+    // Plan p(1,(*s),n,v1);
+    // //Plan p2(p);
+    // p.printStatus();
+    // //p2.printStatus();
+    // p.step();
+    // p.printStatus();
+    // p.step();
+    // p.printStatus();
+    // p.step();
+    // p.printStatus();
 
 // //decleration fot selectionP Economy tests
 //     EconomySelection e = EconomySelection();    
@@ -170,7 +173,7 @@ int main(int argc, char** argv){
     //cout<<f->toString()<<endl;
     //f->step();
     //cout<<f->getTimeLeft()<<endl;
-    delete s;
+    //delete s;
   
     return 0;
 }

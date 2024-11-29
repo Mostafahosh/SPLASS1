@@ -6,7 +6,7 @@
           "type": "cppdbg",
           "request": "launch",
           "program": "${workspaceFolder}/bin/main",
-          "args": [],
+          "args": ["config_file.txt"],
           "stopAtEntry": false,
           "cwd": "${workspaceFolder}",
           "environment": [],
