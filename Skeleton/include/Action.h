@@ -47,7 +47,7 @@ class AddPlan : public BaseAction {
         AddPlan *clone() const override;
     private:
         const string settlementName;
-        const string selectionPolicy;
+        const string selectionPolicy; 
 };
 
 

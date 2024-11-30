@@ -4,6 +4,7 @@
 #include <SelectionPolicy.h>
 #include <Facility.h>
 #include <Settlement.h>
+#include <Action.h>
 #include <fstream>
 #include <sstream>
 #include <string>
@@ -116,7 +117,7 @@ Simulation::Simulation(const string &configFilePath) : isRunning(false), planCou
 //    cout<<" "<<endl;}
 //     for(int i =0 ; i < plans.size() ; i +=1){plans[i].printStatus();
 //     cout<<" "<<endl;}
-configFile.close();
+    configFile.close();
 }
 
 
@@ -127,7 +128,11 @@ void Simulation::start()
     std::cout << "Entering Simulation::start() method..." << std::endl;
     Simulation::open();
     while(isRunning){
-
+        string commandLine;
+        cout << "Enter a command: ";
+        getline(std::cin, commandLine); // Reading a line of input
+        cout << "You entered: \"" << commandLine <<"\""<< std::endl;
+        processingInput(commandLine);
     }
 
 } // maybe add another things to the start
@@ -187,39 +192,54 @@ Plan& Simulation::getPlan(const int planID)
         }
 }
 
-// void Simulation::step()
-// {
-
-//         for(int i = 0; i < plans.size() ;i+=1){
-//             Plan& curr_plan = plans[i];
-//             if(curr_plan.getStatus() == PlanStatus::AVALIABLE){//check if the cout is string or Enum
-//               curr_plan.step();
-//             }
-
-//     //curr_plan.underconstruction[j] is a facility
-//         for(int j =0; j < curr_plan.getUnderConstructions().size() ; j+=1 ){
-//             curr_plan.underConstruction[j]->step(); //decrease the cost of the facility
-//             if(curr_plan.underConstruction[j] -> getStatus  == FacilityStatus::OPERATIONAL){
-//             Plan::addFacility(curr_plan.underConstruction[j]);
-//             curr_plan.underConstruction.erase(j); //should erase the facility at index j from the vector
-//         }
-//         }
-
-//         }
-// }
+void Simulation::step()
+{
+    for(Plan p:plans)
+    {
+        p.step();//implmention is in each plan step
+    }
+   
+}
 
 // to be continued
 void Simulation::close()
 {
-    //      for (int i =0;i < plans.size() ;i+=1){
-    //          cout<<"PlanID: " + plans[i].plan_id<<endl;
-    //          cout<<"SettlementName: " + plans[i].settlement->getName<<endl;
-    //          cout<<"LifeQualityScore: " + plans[i].getlifeQualityScore<<endl;
-    //          cout<<"EconomyScore: " + plans[i].getEconomyScore<<endl;
-    //          cout<<"EnvironmentScore: " + plans[i].getEnvironmentScore<<endl;
+        this->isRunning=false;
+         for (int i =0;i < plans.size() ;i+=1){
+             plans[i].printStatus();
+         }
 }
 
 void Simulation::open() {isRunning = true;}
-// void processingInput(std::string& userCommand){
-//     if(us)
-// }
+
+
+void Simulation::processingInput(std::string& userCommand){
+        istringstream ss(userCommand);
+        string input;
+        ss >> input;
+        //SimulateStep
+        if(input == "step"){
+            int numOfSteps;
+            ss>>numOfSteps;
+            SimulateStep *action=new SimulateStep(numOfSteps);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+        //AddPlan
+        if(input=="plan")
+        {
+            string settName,policy;
+            ss>>settName;
+            ss>>policy;
+            AddPlan *action=new AddPlan(settName,policy);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+        //Close
+        if(input=="close")
+        {
+            Close* action=new Close();
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+}

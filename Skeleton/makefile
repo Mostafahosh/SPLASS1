@@ -11,11 +11,12 @@ compile:
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Auxiliary.o src/Auxiliary.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Simulation.o src/Simulation.cpp
 	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Plan.o src/Plan.cpp
+	g++ -g -Wall -Weffc++ -std=c++11 -c -Iinclude -o bin/Action.o src/Action.cpp
 	
 	
 	
 link:
-	g++  -o bin/main bin/Plan.o bin/Simulation.o bin/Auxiliary.o bin/EconomySelection.o bin/BalancedSelection.o bin/NaiveSelection.o bin/SustainabilitySelection.o bin/Facility.o bin/Settlement.o bin/main.o
+	g++  -o  bin/main bin/Action.o bin/Plan.o bin/Simulation.o bin/Auxiliary.o bin/EconomySelection.o bin/BalancedSelection.o bin/NaiveSelection.o bin/SustainabilitySelection.o bin/Facility.o bin/Settlement.o bin/main.o
 clean:
 	rm -f bin/*.o
 

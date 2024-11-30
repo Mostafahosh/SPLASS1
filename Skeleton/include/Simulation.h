@@ -36,5 +36,5 @@ class Simulation {
         vector<FacilityType> facilitiesOptions;
 
         //added_functions
-        //void processingInput(std::string& userCommand);
+        void processingInput(std::string& userCommand);
 };
