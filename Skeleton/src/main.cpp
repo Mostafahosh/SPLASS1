@@ -10,7 +10,7 @@
 
 using namespace std;
 
-// Simulation* backup = nullptr;
+ Simulation* backup = nullptr;
 
 int main(int argc, char** argv){
      if(argc!=2){
@@ -21,11 +21,11 @@ int main(int argc, char** argv){
      
      Simulation simulation(configurationFile);
      simulation.start();
-    //  if(backup!=nullptr){
-    //  	delete backup;
-    //  	backup = nullptr;
+     if(backup!=nullptr){
+     	delete backup;
+     	backup = nullptr;
      
-
+     }
 
 
 
@@ -167,9 +167,9 @@ int main(int argc, char** argv){
     // std::cout<<"name is = " + example19.getName()<<endl;
     // std::cout<<"name is = " + example20.getName()<<endl;
     
-    int i = 5;
-    std::string name = "mohammad";
-    cout<<"my name is: " << name << i << endl;
+    // int i = 5;
+    // std::string name = "mohammad";
+    // cout<<"my name is: " << name << i << endl;
 
 
 

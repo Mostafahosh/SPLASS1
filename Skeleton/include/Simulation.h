@@ -10,41 +10,44 @@ using std::vector;
 class BaseAction;
 class SelectionPolicy;
 
-class Simulation {
-    public:
-        Simulation(const string &configFilePath);
-        void start();
+    class Simulation {
+        public:
+            Simulation(const string &configFilePath);
+            Simulation(const Simulation& other); //copy constructor
+            Simulation& operator=(const Simulation &other);
+            ~Simulation();
+            void start();
 
-        void addPlan(const Settlement *settlement, SelectionPolicy *selectionPolicy);
-        void addAction(BaseAction *action);
-        bool addSettlement(Settlement *settlement);
-        bool addFacility(FacilityType facility);
-        bool isSettlementExists(const string &settlementName);
-        Settlement *getSettlement(const string &settlementName);
-        Plan &getPlan(const int planID);
-        void step();
-        void close();
-        void open();
+            void addPlan(const Settlement *settlement, SelectionPolicy *selectionPolicy);
+            void addAction(BaseAction *action);
+            bool addSettlement(Settlement *settlement);
+            bool addFacility(FacilityType facility);
+            bool isSettlementExists(const string &settlementName);
+            Settlement *getSettlement(const string &settlementName);
+            Plan &getPlan(const int planID);
+            void step();
+            void close();
+            void open();
 
-        //added functions
-        bool isFacilityExists(const string &facilityName);
-        bool isPlanExists(const int planID);
-        const vector<BaseAction*> &getActions() const;
-
-
+            //added functions
+            bool isFacilityExists(const string &facilityName);
+            bool isPlanExists(const int planID);
+            const vector<BaseAction*> &getActions() const;
 
 
-        
 
-    private:
-        bool isRunning;
-        int planCounter; //For assigning unique plan IDs
-        vector<BaseAction*> actionsLog;
-        vector<Plan> plans;
-        vector<Settlement*> settlements;
-        vector<FacilityType> facilitiesOptions;
 
-        //added_functions
-        void processingInput(std::string& userCommand);
+            
+
+        private:
+            bool isRunning;
+            int planCounter; //For assigning unique plan IDs
+            vector<BaseAction*> actionsLog;
+            vector<Plan> plans;
+            vector<Settlement*> settlements;
+            vector<FacilityType> facilitiesOptions;
+
+            //added_functions
+            void processingInput(std::string& userCommand);
 
 };

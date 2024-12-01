@@ -1,4 +1,5 @@
 #include <Action.h>
+
 using namespace std;
 #include <iostream>
 //BaseAction
@@ -321,4 +322,49 @@ const string Close::toString() const
 
 
 //BackupSimulation
-//BackupSimulation::BackupSimulation();
+BackupSimulation::BackupSimulation(){}
+
+void BackupSimulation::act(Simulation &simulation)
+{
+    backup = &(simulation);
+    complete();
+}
+
+BackupSimulation *BackupSimulation::clone() const
+{
+        return new BackupSimulation(*this);
+
+}
+
+const string BackupSimulation::toString() const
+{
+    return "backup done";
+}
+
+
+RestoreSimulation::RestoreSimulation(){}
+
+void RestoreSimulation::act(Simulation &simulation){
+    if(backup!=nullptr)
+    {
+        simulation = *(backup);
+        complete();
+    }
+    else{
+        error("No backup available");
+    }
+
+}
+
+
+RestoreSimulation *RestoreSimulation::clone() const
+{
+        return new RestoreSimulation(*this);
+}
+
+const string RestoreSimulation::toString() const
+{
+    return "Restore done";
+}
+
+
