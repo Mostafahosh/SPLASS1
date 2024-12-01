@@ -62,20 +62,23 @@ void Plan::printStatus()
     cout<<"LifeQualityScore: "<<life_quality_score<<endl;
     cout<<"EconomyScore: "<<economy_score<<endl;
     cout<<"EnvrionmentScore: "<<environment_score<<endl;
+
+    for (int i = 0; i < underConstruction.size(); i++)
+    {
+        cout<<"FacilityName: "<<underConstruction[i]->getName()<<endl;
+        cout<<"FacilityStatus: UNDER_CONSTRUCTIONS"<<endl;
+    }
+    
+
+
+
     for (int i = 0; i < facilities.size(); i++)
     {
         cout<<"FacilityName: "<<facilities[i]->getName()<<endl;
         cout<<"FacilityStatus: OPERATIONAL"<<endl;
             
     }
-    for (int i = 0; i < underConstruction.size(); i++)
-    {
-        cout<<"FacilityName: "<<underConstruction[i]->getName()<<endl;
-        cout<<"FacilityStatus: UNDER_CONSTRUCTIONS"<<endl;
-          
-        
-    }
-    
+
 }
 
 const Settlement &Plan::getSettlementOfPlan() const
@@ -165,4 +168,12 @@ void Plan::step(){
     }
     else this->setPlanStatus(PlanStatus::AVALIABLE);
 }
+
+
+
+const SelectionPolicy* Plan::getSelectionPolicy() const {
+    return selectionPolicy;
+}
+
+
 

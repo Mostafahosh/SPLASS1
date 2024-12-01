@@ -50,6 +50,8 @@ class Facility: public FacilityType {
         const string toString() const;
         const string facilityCategoryToString(FacilityCategory type)const;
 
+  
+
     private:
         const string settlementName;
         FacilityStatus status;

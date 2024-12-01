@@ -147,7 +147,9 @@ void Simulation::addPlan(const Settlement *settlement, SelectionPolicy *selectio
     Simulation::planCounter += 1;
 }
 
-void Simulation::addAction(BaseAction *action) {}
+void Simulation::addAction(BaseAction *action)  {
+    actionsLog.push_back(action);
+}
 
 bool Simulation::addSettlement(Settlement *settlement)
 {
@@ -242,4 +244,33 @@ void Simulation::processingInput(std::string& userCommand){
             action->act(*this);
             this->actionsLog.push_back(action);
         }
+
 }
+
+        bool Simulation::isFacilityExists(const string& facilityName){
+
+        for(int i = 0; i <facilitiesOptions.size() ; i+=1){
+            if(facilityName == facilitiesOptions[i].getName() ){return true;}
+             }
+             return false;
+}
+
+
+        bool Simulation::isPlanExists(const int planID){
+for(int j = 0; j < plans.size(); j +=1){
+    if(plans[j].getID() == planID){return true;}
+}
+return false;
+
+
+        }
+
+
+
+
+
+
+const vector<BaseAction *> &Simulation::getActions() const {
+    return actionsLog;
+}
+

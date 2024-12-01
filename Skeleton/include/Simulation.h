@@ -14,6 +14,7 @@ class Simulation {
     public:
         Simulation(const string &configFilePath);
         void start();
+
         void addPlan(const Settlement *settlement, SelectionPolicy *selectionPolicy);
         void addAction(BaseAction *action);
         bool addSettlement(Settlement *settlement);
@@ -24,6 +25,14 @@ class Simulation {
         void step();
         void close();
         void open();
+
+        //added functions
+        bool isFacilityExists(const string &facilityName);
+        bool isPlanExists(const int planID);
+        const vector<BaseAction*> &getActions() const;
+
+
+
 
         
 
@@ -37,4 +46,5 @@ class Simulation {
 
         //added_functions
         void processingInput(std::string& userCommand);
+
 };

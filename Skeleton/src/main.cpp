@@ -5,6 +5,8 @@
 #include <Plan.h>
 #include <SelectionPolicy.h>
 #include <vector>
+#include <string>
+
 
 using namespace std;
 
@@ -165,6 +167,9 @@ int main(int argc, char** argv){
     // std::cout<<"name is = " + example19.getName()<<endl;
     // std::cout<<"name is = " + example20.getName()<<endl;
     
+    int i = 5;
+    std::string name = "mohammad";
+    cout<<"my name is: " << name << i << endl;
 
 
 
