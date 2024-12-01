@@ -265,6 +265,95 @@ return false;
 
         }
 
+        Simulation::Simulation(const Simulation& other) : isRunning(other.isRunning) , planCounter(other.planCounter)
+        , facilitiesOptions(other.facilitiesOptions) , plans(other.plans){
+            
+            for(int i = 0 ; i < other.actionsLog.size() ; i +=1){
+actionsLog.push_back(other.actionsLog[i]->clone());
+            }
+//When you assign one std::vector to another, 
+//the standard library performs a deep copy of the vector's contents
+           // plans = other.plans;
+
+            for (int k = 0 ; k < other.settlements.size() ; k+=1){
+                settlements.push_back(new Settlement( *(other.settlements[k]) ) );
+            }
+
+           //facilitiesOptions = other.facilitiesOptions;
+        
+        }
+
+
+         Simulation& Simulation::operator=(const Simulation &other){
+            if(this != &other){
+                 for (auto action : actionsLog) {
+            delete action;
+        }
+        actionsLog.clear();
+
+         for (auto settlement : settlements) {
+            delete settlement;
+        }
+        settlements.clear();
+
+        isRunning = other.isRunning;
+        planCounter = other.planCounter;
+
+
+        for(int i = 0 ; i < other.plans.size() ; i +=1){
+            plans.push_back(other.plans[i]);
+        }
+
+        for(int j = 0; j < other.facilitiesOptions.size() ; j +=1){
+            facilitiesOptions.push_back(other.facilitiesOptions[j]);
+        }
+
+        // facilitiesOptions = other.facilitiesOptions;
+
+             for(int i = 0 ; i < other.actionsLog.size() ; i +=1){
+actionsLog.push_back(other.actionsLog[i]->clone());
+            }
+
+              for (int k = 0 ; k < other.settlements.size() ; k+=1){
+                settlements.push_back(new Settlement( *(other.settlements[k]) ) );
+            }
+
+        
+            }
+         }
+
+
+         Simulation::~Simulation(){
+        for(int i = 0; i < actionsLog.size() ; i +=1){
+            delete actionsLog[i];
+        }
+        actionsLog.clear();
+        //actionsLog = nullptr;
+
+        // for(int i = 0 ; i < plans.size() ; i +=1){
+        //     delete plans[i];
+        // }
+        //no dynamic memory is involved.
+        plans.clear();
+        //plans = nullptr;
+
+        for(int i = 0 ; i < settlements.size() ; i +=1){
+            delete settlements[i];
+        }
+        settlements.clear();
+        //settlements = nullptr;
+
+
+        //no dynamic memory is involved.
+        // for(int i = 0 ; i < facilitiesOptions.size() ; i +=1){
+        //     delete facilitiesOptions[i];
+        // }
+        facilitiesOptions.clear();
+        //facilitiesOptions = nullptr; needed ?
+
+         }
+
+
 
 
 
