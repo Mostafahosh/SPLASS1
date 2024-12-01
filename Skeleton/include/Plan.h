@@ -34,6 +34,7 @@ class Plan {
         //Copy//Des
         Plan(const Plan& other);
         ~Plan();
+        Plan& operator=(const Plan& other);
 
     private:
         int plan_id;

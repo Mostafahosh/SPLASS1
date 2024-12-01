@@ -46,6 +46,67 @@ plan_id(planId),settlement(&settlement),status(PlanStatus::AVALIABLE),facilityOp
         }
     }
 
+    // Copy Assignment Operator
+    Plan& Plan::operator=(const Plan& other) {
+        if (this != &other) {
+            delete selectionPolicy;
+            for (Facility* facility : facilities) {
+                delete facility;
+            }
+            for (Facility* facility : underConstruction) {
+                delete facility;
+            }
+
+            
+            
+        //    for(FacilityType facility : facilityOptions)
+        //    {
+        //     delete facility;
+        //    }
+
+           
+            plan_id = other.plan_id;
+            settlement = other.settlement;
+            life_quality_score = other.life_quality_score;
+            economy_score = other.economy_score;
+            environment_score = other.environment_score;
+            status = other.status;
+
+            
+            if (other.selectionPolicy) {
+                selectionPolicy = other.selectionPolicy->clone();
+            } else {
+                selectionPolicy = nullptr;
+            }
+
+            //there is no need to change facilitieOptions because its the same
+            //     facilityOptions.clear();
+            //    for(FacilityType facility:other.facilityOptions)
+            //    {
+            //     this->facilityOptions.push_back(facility);
+            //    }
+    
+            facilities.clear();
+            for (Facility* facility : other.facilities) {
+                facilities.push_back(new Facility(*facility));
+            }
+
+            underConstruction.clear();
+            for (Facility* facility : other.underConstruction) {
+                underConstruction.push_back(new Facility(*facility));
+            }
+        }
+
+        
+        
+
+        return *this;
+    }
+
+    
+
+
+
 const int Plan::getlifeQualityScore() const{return life_quality_score;}
 const int Plan::getEconomyScore() const {return economy_score;}
 const int Plan::getEnvironmentScore() const{return environment_score;}

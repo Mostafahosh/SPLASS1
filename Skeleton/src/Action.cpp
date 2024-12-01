@@ -112,6 +112,7 @@ void AddSettlement::act(Simulation &simulation){
     //create a new settlement and add it to settlements
     Settlement* settAddAction = new Settlement(settlementName,settlementType);
     simulation.addSettlement(settAddAction); 
+    complete();
 }
 
 
@@ -147,6 +148,7 @@ void AddFacility::act(Simulation &simulation){
 
     //the search for the facility will occur twise!?
     simulation.addFacility(*facilityAddAction);
+    complete();
 }
 
 AddFacility *AddFacility::clone() const {
@@ -232,20 +234,20 @@ void ChangePlanPolicy::act(Simulation &simulation){
 
         else if(newPolicy == "bal"){
             BalancedSelection* bPolicy = new BalancedSelection(0,0,0); //should i pass 0 parametrs or calculate the existing facilites intrebution and add it accordingly ?
-actionPlan.setSelectionPolicy(bPolicy);
-}
+            actionPlan.setSelectionPolicy(bPolicy);
+        }
 
-else if(newPolicy == "eco"){
-    EconomySelection* ecoPolicy = new EconomySelection();//lastIndex should start from 0 and changed accordingly
-    actionPlan.setSelectionPolicy(ecoPolicy);
-}
+        else if(newPolicy == "eco"){
+            EconomySelection* ecoPolicy = new EconomySelection();//lastIndex should start from 0 and changed accordingly
+            actionPlan.setSelectionPolicy(ecoPolicy);
+        }
 
-else if(newPolicy == "env"){
-    SustainabilitySelection* envPolicy = new SustainabilitySelection();//lastIndex should start from 0 and changed accordingly
-    actionPlan.setSelectionPolicy(envPolicy);
-}
-
-cout<<"newPolicy: " << newPolicy << endl;
+        else if(newPolicy == "env"){
+            SustainabilitySelection* envPolicy = new SustainabilitySelection();//lastIndex should start from 0 and changed accordingly
+            actionPlan.setSelectionPolicy(envPolicy);
+        }
+        complete();
+        cout<<"newPolicy: " << newPolicy << endl;
 }
 
 ChangePlanPolicy *ChangePlanPolicy::clone() const
@@ -276,6 +278,7 @@ void PrintActionsLog::act(Simulation &simulation){
     for (int i = 0; i < numOfActions; i+=1) {
         std::cout << actionLogs[i] -> toString() <<std::endl ;
     }
+    complete();
 }
 
 PrintActionsLog *PrintActionsLog::clone() const {
@@ -298,8 +301,9 @@ Close::Close():BaseAction(){}
 
 void Close::act(Simulation &simulation)
 {
-    this->complete();
+    
     simulation.close();
+    this->complete();
 }
 
 Close *Close::clone() const

@@ -50,7 +50,10 @@ Simulation::Simulation(const string &configFilePath) : isRunning(false), planCou
             Settlement* settlementAdd = new Settlement(settlementName, settlementTypeEnum);
             Simulation::addSettlement(settlementAdd);
              //cout << "the new settlement name is: " << settlementName << endl;
-             //cout << "the new settlement Type is: " << settlementType << endl;
+             //cout << "the new settlement Type is: " << settlementType << endl;if (type == "settlement")
+        
+
+            
         }
 
         else if (type == "facility")
@@ -68,6 +71,23 @@ Simulation::Simulation(const string &configFilePath) : isRunning(false), planCou
             Simulation::facilitiesOptions.push_back(*addFacility);
             //cout << "the new facility name is: " << facilityName << facilityCategory<<facilityPrice<<facilityQuality<<facilityEco<<facilityEnv<<endl;
         }
+        // }
+
+        // else if (type == "facility")
+        // {
+        //     std::string facilityName;
+        //     int facilityCategory;
+        //     int facilityPrice;
+        //     int facilityQuality;
+        //     int facilityEco;
+        //     int facilityEnv;
+
+        //     ss >> facilityName >> facilityCategory >> facilityPrice >> facilityQuality >> facilityEco >> facilityEnv;
+        //     FacilityCategory facilityCategoryEnum = static_cast<FacilityCategory>(facilityCategory); // casting int to enum
+        //     FacilityType *addFacility = new FacilityType(facilityName, facilityCategoryEnum, facilityPrice, facilityQuality, facilityEco, facilityEnv);
+        //     Simulation::facilitiesOptions.push_back(*addFacility);
+        //     //cout << "the new facility name is: " << facilityName << facilityCategory<<facilityPrice<<facilityQuality<<facilityEco<<facilityEnv<<endl;
+        // }
 
         else if (type == "plan")
         {
@@ -244,6 +264,78 @@ void Simulation::processingInput(std::string& userCommand){
             action->act(*this);
             this->actionsLog.push_back(action);
         }
+
+        //AddSettlement
+        if(input=="settlement")
+        {
+            string settName;
+            int settlementType;
+            ss >> settName >> settlementType;
+            SettlementType settlementTypeEnum = static_cast<SettlementType>(settlementType); 
+            AddSettlement* action=new AddSettlement(settName,settlementTypeEnum);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+
+        //AddFacility
+        if(input=="facility")
+        {
+            string facilityName;
+            int facilityCategory;
+            int facilityPrice;
+            int facilityQuality;
+            int facilityEco;
+            int facilityEnv;
+
+            ss >> facilityName >> facilityCategory >> facilityPrice >> facilityQuality >> facilityEco >> facilityEnv;
+            FacilityCategory facilityCategoryEnum = static_cast<FacilityCategory>(facilityCategory);
+            AddFacility* action=new AddFacility(facilityName,facilityCategoryEnum,facilityPrice,facilityQuality,facilityEco,facilityEnv);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+
+        //PrintPlanStatus
+        if(input=="planStatus")
+        {
+            int id;
+            ss>>id;
+            PrintPlanStatus* action=new PrintPlanStatus(id);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+
+        //ChangePlanPolicy
+        if(input=="changePolicy")
+        {
+            int id;
+            string newPolicy;
+            ss>>id>>newPolicy;
+            ChangePlanPolicy* action=new ChangePlanPolicy(id,newPolicy);
+            action->act(*this);
+            this->actionsLog.push_back(action);
+        }
+
+        //PrintActionsLog
+        if(input=="log")
+        {
+            PrintActionsLog* action=new PrintActionsLog();
+            action->act(*this);
+            this->actionsLog.push_back(action);
+            
+        }
+
+        //BackupSimulation
+        if(input=="backup")
+        {
+
+        }
+
+        //RestoreSimulation
+        if(input=="restore")
+        {
+            
+        }
+
 
 }
 
